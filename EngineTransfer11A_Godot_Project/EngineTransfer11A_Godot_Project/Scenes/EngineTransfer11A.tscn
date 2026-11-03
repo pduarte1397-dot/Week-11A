@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/TranslateObject.cs" id="1_move"]
+[ext_resource type="Script" path="res://Scripts/RotateObject.cs" id="2_turn"]
+[ext_resource type="Script" path="res://Scripts/ChangeObjectColor.cs" id="3_color"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_marker"]
+size = Vector3(1, 1, 1)
+
+[node name="EngineTransfer11A" type="Node3D"]
+
+[node name="MyMarker" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_marker")
+scale = Vector3(1, 1.5, 1)
+
+[node name="Move" type="Node" parent="MyMarker"]
+script = ExtResource("1_move")
+
+[node name="Turn" type="Node" parent="MyMarker"]
+script = ExtResource("2_turn")
+
+[node name="Color" type="Node" parent="MyMarker"]
+script = ExtResource("3_color")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+position = Vector3(0, 2, 10)
+rotation_degrees = Vector3(-10, 0, 0)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-45, -35, 0)
+light_energy = 1.2
+shadow_enabled = true
